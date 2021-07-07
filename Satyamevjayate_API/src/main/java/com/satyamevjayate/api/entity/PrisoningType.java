@@ -23,7 +23,7 @@ public class PrisoningType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="PrisoningTypeId")
-	private BigInteger risoningTypeId;
+	private Long prisoningTypeId;
 	
 	@Column(name="Name")
 	private String name;

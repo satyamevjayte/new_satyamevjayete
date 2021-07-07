@@ -36,9 +36,7 @@ public class CrimeType {
 	private String crimeType;
 	
 	
-	@OneToOne(mappedBy = "crimeType")
-    @JsonIgnore
-    private Crime crimeId;
+
 	
 	
 	

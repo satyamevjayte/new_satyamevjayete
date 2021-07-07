@@ -31,13 +31,11 @@ public class PoliceRole {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="RoleID")
-	private BigInteger roleID;
+	private Long roleID;
 	@Column(name="RoleName")
 	private String roleName;
 	
-	@OneToOne(mappedBy = "policeRole")
-    @JsonIgnore
-    private Police police;
+	
 	
 
 

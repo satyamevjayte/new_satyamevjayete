@@ -37,23 +37,22 @@ public class Crime {
   
     @OneToOne(optional=false)
     @JoinColumn(name = "AddressID")
-    private Addresses crimeAddress;
+    private Addresses crimeResidenceAddress;
+
+ 
+    @Column(name = "CrimeTypeID")
+    private Long crimeType;
     
-    @OneToOne(optional=false)
-    @JoinColumn(name = "CrimeTypeID")
-    private CrimeType crimeType;
     
-    @OneToMany(mappedBy = "imageCrimeId")
-    @JsonIgnore
-    private List<CrimeImage> crimeImage;
     
-    @OneToMany(mappedBy = "SuspectCrimeId")
-    @JsonIgnore
-    private List<CrimeSuspect> crimeSuspect;
+  
     
     @OneToMany(mappedBy = "crimeVictimCrimeID")
     @JsonIgnore
     private List<CrimeVictim> crimeVictim;
+    
+    
+   
     
    
 

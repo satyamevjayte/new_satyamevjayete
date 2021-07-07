@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="contact")
@@ -31,12 +31,12 @@ public class Contact {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ContactId")
-	private BigInteger contactId;
+	private Long contactId;
 	
 	
 	
 	@Column(name="ContactNumber")
-	private BigInteger contactNumber;
+	private Long contactNumber;
 	
 	@Column(name="ContactEmail")
 	private String contactEmail;
@@ -46,18 +46,18 @@ public class Contact {
     @JsonIgnore
     private Police policeContact;
 	
-	@OneToMany(mappedBy = "suspectContact")
+	@OneToOne(mappedBy = "suspectContact")
     @JsonIgnore
-    private List<CrimeSuspect> crimeSuspectContact;
+    private CrimeSuspect crimeSuspectContact;
 	
-	@OneToMany(mappedBy = "crimeVictimeContact")
+	@OneToOne(mappedBy = "crimeVictimeContact")
     @JsonIgnore
-    private List<CrimeVictim> crimeVictimeContact;
+    private CrimeVictim crimeVictimeContact;
 	
 	
-	@OneToMany(mappedBy = "criminalContact")
+	@OneToOne(mappedBy = "criminalContact")
     @JsonIgnore
-    private List<Criminal> criminalContact;
+    private Criminal criminalContact;
 	
 	
 	@OneToOne(mappedBy = "policeStationContact")
@@ -68,5 +68,31 @@ public class Contact {
     @JsonIgnore
     private Worker workerContact;
 	
+	@OneToOne(mappedBy = "complainerContact")
+    @JsonIgnore
+    private Complainer complainerContact;
 
+	public Long getContactId() {
+		return contactId;
+	}
+
+	public void setContactId(Long contactId) {
+		this.contactId = contactId;
+	}
+
+	public Long getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(Long contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
+	public String getContactEmail() {
+		return contactEmail;
+	}
+
+	public void setContactEmail(String contactEmail) {
+		this.contactEmail = contactEmail;
+	}
 }

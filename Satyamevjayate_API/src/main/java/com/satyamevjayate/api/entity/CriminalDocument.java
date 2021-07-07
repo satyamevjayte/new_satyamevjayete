@@ -21,9 +21,9 @@ public class CriminalDocument {
 //    @Column(name="CriminalID")
 //    private Long CriminalID;
     
-    @OneToOne(optional=false)
-    @JoinColumn(name = "CriminalID")
-    private Criminal criminalDocument;
+
+    @Column(name = "CriminalID")
+    private Long criminalDocument;
     
     @Column(name="DocumentType")
     private String documentType;

@@ -14,25 +14,23 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
+
 @Table(name="police")
 public class Police {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="PoliceID")
-	private BigInteger	policeID;
+	private Long	policeID;
 	
 	@Column(name="Pwd")
 	private String pwd;
@@ -41,25 +39,106 @@ public class Police {
 	private Byte[] policeCardImage;
 	
 	@ManyToOne(optional=false)
-    @JoinColumn(name = "AddressID")
-    private Addresses policeAddress;
-	
+	@JoinColumn(name = "ResidenceAddressID")
+	private Addresses policeResidenceAddress;
+	    
 	@ManyToOne(optional=false)
-    @JoinColumn(name = "RoleID")
-    private PoliceRole policeRole;
+	@JoinColumn(name = "PermanentAddressID")
+	private Addresses policePermanentAddress;
 	
-	@ManyToOne(optional=false)
+//	@ManyToOne(optional=false)
+//    @JoinColumn(name = "RoleID")
+//    private PoliceRole policeRole;
+//	
+	@OneToOne(optional=false)
     @JoinColumn(name = "ContactId")
     private Contact policeContact;
 	
-	@ManyToOne(optional=false)
+	@OneToOne(optional=false)
     @JoinColumn(name = "PersonID")
     private Person person;
+
+	public Long getPoliceID() {
+		return policeID;
+	}
+
+	public void setPoliceID(Long policeID) {
+		this.policeID = policeID;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	public Byte[] getPoliceCardImage() {
+		return policeCardImage;
+	}
+
+	public void setPoliceCardImage(Byte[] policeCardImage) {
+		this.policeCardImage = policeCardImage;
+	}
+
+	public Addresses getPoliceResidenceAddress() {
+		return policeResidenceAddress;
+	}
+
+	public void setPoliceResidenceAddress(Addresses policeResidenceAddress) {
+		this.policeResidenceAddress = policeResidenceAddress;
+	}
+
+	public Addresses getPolicePermanentAddress() {
+		return policePermanentAddress;
+	}
+
+	public void setPolicePermanentAddress(Addresses policePermanentAddress) {
+		this.policePermanentAddress = policePermanentAddress;
+	}
+
+	public Contact getPoliceContact() {
+		return policeContact;
+	}
+
+	public void setPoliceContact(Contact policeContact) {
+		this.policeContact = policeContact;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	public Long getPoliceRoleID() {
+		return policeRoleID;
+	}
+
+	public void setPoliceRoleID(Long policeRoleID) {
+		this.policeRoleID = policeRoleID;
+	}
+
+	public Long getPoliceStationID() {
+		return policeStationID;
+	}
+
+	public void setPoliceStationID(Long policeStationID) {
+		this.policeStationID = policeStationID;
+	}
+
+	//	@ManyToOne(optional=false)
+//    @JoinColumn(name = "PoliceStationID")
+//    private PoliceStation policeStation;
+//	
+	@Column(name="RoleID")
+	private Long policeRoleID;
 	
-	
-	@ManyToOne(optional=false)
-    @JoinColumn(name = "PoliceStationID")
-    private PoliceStation policeStation;
+	@Column(name="PoliceStationID")
+	private Long policeStationID;
 	
 
 }

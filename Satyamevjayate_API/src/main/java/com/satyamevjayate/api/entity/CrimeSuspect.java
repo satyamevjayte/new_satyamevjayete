@@ -24,19 +24,23 @@ public class CrimeSuspect {
     private BigInteger crimeSuspectID;
 
     
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "AddressId")
-    private Addresses suspectAddress;
-	
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "CrimeId")
-    private Crime SuspectCrimeId;
+    @OneToOne(optional=false)
+    @JoinColumn(name = "ResidenceAddressID")
+    private Addresses suspectResidenceAddress;
     
-	@ManyToOne(optional=false)
+    @OneToOne(optional=false)
+    @JoinColumn(name = "PermanentAddressID")
+    private Addresses suspectPermanentAddress;
+	
+ 
+    @Column(name = "CrimeId")
+    private Long SuspectCrimeId;
+    
+	@OneToOne(optional=false)
     @JoinColumn(name = "ContactId")
     private Contact suspectContact;
 	
-	@ManyToOne(optional=false)
+	@OneToOne(optional=false)
     @JoinColumn(name = "PersonID")
     private Person suspectPerson;
 	

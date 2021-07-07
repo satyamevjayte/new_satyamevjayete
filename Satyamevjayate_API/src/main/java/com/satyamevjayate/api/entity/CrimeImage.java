@@ -22,9 +22,9 @@ public class CrimeImage {
 //    @Column(name="CrimeID")
 //    private BigInteger CrimeID;
     
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "CrimeId")
-    private Crime imageCrimeId;
+    
+    @Column(name = "CrimeId")
+    private Long CrimeId;
     
     @Column(name="CrimeImage")
     private Byte[] crimeImage;

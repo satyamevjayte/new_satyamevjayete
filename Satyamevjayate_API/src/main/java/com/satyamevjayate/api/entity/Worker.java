@@ -29,8 +29,12 @@ public class Worker {
 
     
     @OneToOne(optional=false)
-    @JoinColumn( name = "AddressID")
-    private Addresses workerAddress;
+	@JoinColumn(name = "ResidenceAddressID")
+	private Addresses workerResidenceAddress;
+	    
+	@OneToOne(optional=false)
+	@JoinColumn(name = "PermanentAddressID")
+	private Addresses workerPermanentAddress;
 	
 	@OneToOne(optional=false)
     @JoinColumn( name = "ContactID")

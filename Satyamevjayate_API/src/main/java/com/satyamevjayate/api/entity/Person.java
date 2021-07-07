@@ -42,22 +42,28 @@ public class Person {
     @JsonIgnore
     private Police police;
     
-    @OneToMany(mappedBy = "suspectPerson")
+    @OneToOne(mappedBy = "suspectPerson")
     @JsonIgnore
-    private List<CrimeSuspect> crimeSuspect;
+    private CrimeSuspect crimeSuspect;
     
     
-    @OneToMany(mappedBy = "victimPerson")
+    @OneToOne(mappedBy = "victimPerson")
     @JsonIgnore
-    private List<CrimeVictim> crimeVictim;
+    private CrimeVictim crimeVictim;
     
-    @OneToMany(mappedBy = "criminalPerson")
+    @OneToOne(mappedBy = "criminalPerson")
     @JsonIgnore
-    private List<Criminal> criminal;
+    private Criminal criminal;
     
     @OneToOne(mappedBy = "workerPerson")
     @JsonIgnore
     private Worker worker;
+    
+    @OneToOne(mappedBy = "complainerPerson")
+    @JsonIgnore
+    private Complainer complainerPerson;
+    
+  
     
 
 }

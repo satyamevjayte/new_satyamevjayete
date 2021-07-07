@@ -31,9 +31,13 @@ public class Criminal {
     
     
     
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "AddressID")
-    private Addresses criminalAddress;
+    @OneToOne(optional=false)
+    @JoinColumn(name = "ResidenceAddressID")
+    private Addresses criminalResidenceAddress;
+    
+    @OneToOne(optional=false)
+    @JoinColumn(name = "PermanentAddressID")
+    private Addresses criminalPermanentAddress;
 	
 	@ManyToOne(optional=false)
     @JoinColumn(name = "ContactID")
@@ -44,15 +48,11 @@ public class Criminal {
     private Person criminalPerson;
 	
 	
-	@OneToOne(mappedBy = "criminalDocument")
-    @JsonIgnore
-    private CriminalDocument criminalDocument;
-	
     @Column(name = "Height")
     private Long height;
     @Column(name = "Weight")
     private Long weight;
     @Column(name = "Type")
-    private Long type;
+    private String type;
 
 }

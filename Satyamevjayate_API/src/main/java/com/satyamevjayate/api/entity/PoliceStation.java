@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.math.BigInteger;
 @Entity
@@ -20,15 +21,17 @@ public class PoliceStation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column(name="PoliceStationID")
-    private BigInteger policeStationID;
+    private Long policeStationID;
+    
     @Column(name="StationName")
     private String stationName;
 
 
 
-    @ManyToOne(optional=false)
+    @OneToOne(optional=false)
     @JoinColumn(name = "AddressID")
-    private Addresses policeStationAddress;
+    private Addresses policestationAddress;
+    
     
     
     @ManyToOne(optional=false)
@@ -37,9 +40,7 @@ public class PoliceStation {
     
     
     
-    @OneToOne(mappedBy = "policeStation")
-    @JsonIgnore
-    private Police policeStation;
+   
 
 
 }
