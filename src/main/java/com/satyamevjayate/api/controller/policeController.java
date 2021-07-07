@@ -15,7 +15,7 @@ import com.satyamevjayate.api.services.PoliceServices;
 
 @RestController
 
-public class PoliceController {
+public class policeController {
 	
 	@Autowired
 	private PoliceServices policeServices;
