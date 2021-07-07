@@ -10,7 +10,7 @@ import java.util.Date;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "workerdocument")
+@Table(name = "worker_document")
 
 public class WorkerDocument {
     @Id
@@ -19,7 +19,7 @@ public class WorkerDocument {
     private Long documentID;
 
     
-    @ManyToOne(optional=false)
+    @ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "WorkerID")
     private Worker workerDocument;
 

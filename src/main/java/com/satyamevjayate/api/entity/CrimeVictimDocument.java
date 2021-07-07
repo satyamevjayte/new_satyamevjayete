@@ -21,7 +21,7 @@ public class CrimeVictimDocument {
 
     
     
-    @ManyToOne(optional=false)
+    @ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "CrimeVictimId")
     private CrimeVictim crimeVictimDocumentID;
 

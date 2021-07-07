@@ -1,5 +1,6 @@
 package com.satyamevjayate.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,23 +22,23 @@ public class CrimeVictim {
         @Column(name="CrimeVictimID")
         private BigInteger crimeVictimID;
 
-        @OneToOne(optional=false)
+        @ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
         @JoinColumn(name = "ResidenceAddressID")
         private Addresses victimResidenceAddress;
         
-        @OneToOne(optional=false)
+        @ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
         @JoinColumn(name = "PermanentAddressID")
         private Addresses victimPermanentAddress;
     	
-        @ManyToOne(optional=false)
+        @OneToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
         @JoinColumn(name = "CrimeId")
         private Crime crimeVictimCrimeID;
         
-    	@OneToOne(optional=false)
+    	@OneToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
         @JoinColumn(name = "ContactId")
         private Contact crimeVictimeContact;
     	
-    	@OneToOne(optional=false)
+    	@ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
         @JoinColumn(name = "PersonID")
         private Person victimPerson;
         

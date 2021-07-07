@@ -1,6 +1,7 @@
 package com.satyamevjayate.api.controller;
 
 import com.satyamevjayate.api.entity.CrimeSuspectDocument;
+import com.satyamevjayate.api.services.CrimeSuspectDocumentServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,9 +11,9 @@ import java.util.List;
 
 public class CrimeSuspectDocumentController {
     @Autowired
-    private com.satyamevjayate.api.services.CrimeSuspectDocumentServices  CrimeSuspectDocument_Services;
+    private CrimeSuspectDocumentServices CrimeSuspectDocument_Services;
 
-    @GetMapping("/crimesuspectdocument")
+    @GetMapping("/c")
     public List<CrimeSuspectDocument> getAllCrimeSuspectDocument() {
         return CrimeSuspectDocument_Services.listAllCrimeSuspectDocument();
     }

@@ -31,19 +31,19 @@ public class Criminal {
     
     
     
-    @OneToOne(optional=false)
+    @ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "ResidenceAddressID")
     private Addresses criminalResidenceAddress;
     
-    @OneToOne(optional=false)
+    @ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "PermanentAddressID")
     private Addresses criminalPermanentAddress;
 	
-	@ManyToOne(optional=false)
+	@ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "ContactID")
     private Contact criminalContact;
 	
-	@ManyToOne(optional=false)
+	@ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "PersonID")
     private Person criminalPerson;
 	

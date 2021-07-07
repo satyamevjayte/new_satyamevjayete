@@ -38,11 +38,11 @@ public class Police {
 	@Column(name="PoliceCardImage")
 	private Byte[] policeCardImage;
 	
-	@ManyToOne(optional=false)
+	@ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "ResidenceAddressID")
 	private Addresses policeResidenceAddress;
 	    
-	@ManyToOne(optional=false)
+	@ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "PermanentAddressID")
 	private Addresses policePermanentAddress;
 	
@@ -50,11 +50,11 @@ public class Police {
 //    @JoinColumn(name = "RoleID")
 //    private PoliceRole policeRole;
 //	
-	@OneToOne(optional=false)
+	@OneToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "ContactId")
     private Contact policeContact;
 	
-	@OneToOne(optional=false)
+	@ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "PersonID")
     private Person person;
 

@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -38,30 +39,29 @@ public class Person {
     @Column(name="PersonImage")
     private byte[] personImage;
 
-    @OneToOne(mappedBy = "person")
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Police police;
-    
-    @OneToOne(mappedBy = "suspectPerson")
+    private Set<Police> police;
+
+    @OneToMany(mappedBy = "suspectPerson", cascade = CascadeType.ALL)
     @JsonIgnore
-    private CrimeSuspect crimeSuspect;
-    
-    
-    @OneToOne(mappedBy = "victimPerson")
+    private Set<CrimeSuspect> crimeSuspect;
+
+    @OneToMany(mappedBy = "victimPerson", cascade = CascadeType.ALL)
     @JsonIgnore
-    private CrimeVictim crimeVictim;
-    
-    @OneToOne(mappedBy = "criminalPerson")
+    private Set<CrimeVictim> crimeVictim;
+
+    @OneToMany(mappedBy = "criminalPerson", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Criminal criminal;
-    
-    @OneToOne(mappedBy = "workerPerson")
+    private Set<Criminal> criminal;
+
+    @OneToMany(mappedBy = "workerPerson", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Worker worker;
-    
-    @OneToOne(mappedBy = "complainerPerson")
+    private Set<Worker> worker;
+
+    @OneToMany(mappedBy = "complainerPerson", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Complainer complainerPerson;
+    private Set<Complainer> complainerPerson;
     
   
     

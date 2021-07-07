@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -28,24 +29,25 @@ public class Worker {
     private Date dateOfResign;
 
     
-    @OneToOne(optional=false)
+    @ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "ResidenceAddressID")
 	private Addresses workerResidenceAddress;
 	    
-	@OneToOne(optional=false)
+	@ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "PermanentAddressID")
 	private Addresses workerPermanentAddress;
 	
-	@OneToOne(optional=false)
+	@OneToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn( name = "ContactID")
     private Contact workerContact;
 	
-	@OneToOne(optional=false)
+	@ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "PersonID")
     private Person workerPerson;
 	
-	@OneToOne(mappedBy = "workerDocument")
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "workerDocument")
 	@JsonIgnore
-	private WorkerDocument workerDocument;
+	private Set<WorkerDocument> workerDocument;
 
 }

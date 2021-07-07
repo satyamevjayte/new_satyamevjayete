@@ -2,6 +2,7 @@ package com.satyamevjayate.api.entity;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -42,9 +43,9 @@ public class Contact {
 	private String contactEmail;
 	
 	
-	@OneToOne(mappedBy = "policeContact")
+	@OneToMany(mappedBy = "policeContact")
     @JsonIgnore
-    private Police policeContact;
+    private Set<Police> policeContact;
 	
 	@OneToOne(mappedBy = "suspectContact")
     @JsonIgnore

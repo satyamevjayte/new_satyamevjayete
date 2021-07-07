@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +15,7 @@ import lombok.Setter;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 
 @Data
@@ -35,21 +37,22 @@ public class Crime {
     @Column(name="Description")
     private String description;
   
-    @OneToOne(optional=false)
+    @ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "AddressID")
     private Addresses crimeResidenceAddress;
 
  
     @Column(name = "CrimeTypeID")
     private Long crimeType;
-    
-    
-    
-  
-    
-    @OneToMany(mappedBy = "crimeVictimCrimeID")
+
+
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JoinColumn(name = "crimeVictimCrimeID")
     @JsonIgnore
-    private List<CrimeVictim> crimeVictim;
+    private Set<CrimeVictim> crimeVictim;
     
     
    

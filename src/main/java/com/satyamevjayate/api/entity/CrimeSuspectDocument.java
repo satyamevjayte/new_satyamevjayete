@@ -19,11 +19,9 @@ public class CrimeSuspectDocument {
     @Column(name="DocumentID")
     private BigInteger documentID;
     
-    @ManyToOne(optional=false)
+    @ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "CrimeSuspectID")
     private CrimeSuspect crimeSuspectDocument;
-    
-  
 
     @Column(name="DocumentType")
     private String documentType;

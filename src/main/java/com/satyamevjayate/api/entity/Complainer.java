@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="complainer")
+@Table(name="complainer",schema = "targetSchemaName")
 public class Complainer {
 
     @Id
@@ -24,19 +24,19 @@ public class Complainer {
 
 
 
-    @OneToOne(optional=false)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "ResidenceAddressID")
     private Addresses complainerResidenceAddress;
     
-    @OneToOne(optional=false)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "PermanentAddressID")
     private Addresses complainerPermanentAddress;
 
-    @ManyToOne(optional=false)
+    @OneToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "ContactId")
     private Contact complainerContact;
 	
-	@ManyToOne(optional=false)
+	@ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "PersonID")
     private Person complainerPerson;
 

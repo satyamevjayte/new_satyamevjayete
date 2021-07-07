@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -24,11 +25,11 @@ public class CrimeSuspect {
     private BigInteger crimeSuspectID;
 
     
-    @OneToOne(optional=false)
+    @ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "ResidenceAddressID")
     private Addresses suspectResidenceAddress;
     
-    @OneToOne(optional=false)
+    @ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "PermanentAddressID")
     private Addresses suspectPermanentAddress;
 	
@@ -36,17 +37,18 @@ public class CrimeSuspect {
     @Column(name = "CrimeId")
     private Long SuspectCrimeId;
     
-	@OneToOne(optional=false)
+	@OneToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "ContactId")
     private Contact suspectContact;
 	
-	@OneToOne(optional=false)
+	@ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "PersonID")
     private Person suspectPerson;
 	
 	
-	 @OneToMany(mappedBy = "crimeSuspectDocument")
-	 @JsonIgnore
-	 private List<CrimeSuspectDocument> crimeSuspectDocument;
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "crimeSuspectDocument")
+    @JsonIgnore
+    private Set<CrimeSuspectDocument> crimeSuspectDocument;
 
 }

@@ -24,7 +24,7 @@ public class Prison {
 //    @Column(name="AddressID")
 //    private Long    addressID;
     
-    @OneToOne(optional=false)
+    @ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "AddressID")
 	private Addresses prisonAddress;
 	    

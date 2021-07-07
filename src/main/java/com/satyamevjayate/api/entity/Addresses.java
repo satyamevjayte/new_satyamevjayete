@@ -2,17 +2,10 @@ package com.satyamevjayate.api.entity;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Set;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -49,71 +42,77 @@ public class Addresses {
 	
 	@Column(name="Country")
 	private String country;
-	
-	
-	@OneToMany(mappedBy = "policeResidenceAddress")
+
+
+	@OneToMany(mappedBy = "policeResidenceAddress", cascade = CascadeType.ALL)
     @JsonIgnore
-    private  List<Police> policeResidenceAddress;
-	
-	@OneToMany(mappedBy = "policePermanentAddress")
+    private Set<Police> policeResidenceAddress;
+
+	@OneToMany(mappedBy = "policePermanentAddress", cascade = CascadeType.ALL)
     @JsonIgnore
-    private  List<Police> policePermanentAddress;
-	
-	@OneToOne(mappedBy = "crimeResidenceAddress")
+    private Set<Police> policePermanentAddress;
+
+	@OneToMany(mappedBy = "crimeResidenceAddress", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Crime crimeResidenceAddress;
-	
-	@OneToMany(mappedBy = "suspectResidenceAddress")
+    private Set<Crime> crimeResidenceAddress;
+
+
+	@OneToMany(mappedBy = "suspectResidenceAddress", cascade = CascadeType.ALL)
+	@JsonIgnore
+    private Set<CrimeSuspect> crimeSuspectResidenceAddress;
+
+
+	@OneToMany(mappedBy = "suspectPermanentAddress", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<CrimeSuspect> crimeSuspectResidenceAddress;
-	
-	@OneToMany(mappedBy = "suspectPermanentAddress")
+    private Set<CrimeSuspect> crimeSuspectPermanentAddress;
+
+
+	@OneToMany(mappedBy = "victimResidenceAddress", cascade = CascadeType.ALL)
+	@JsonIgnore
+    private Set<CrimeVictim> crimeVictimeResidenceAddress;
+
+
+	@OneToMany(mappedBy = "victimPermanentAddress", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<CrimeSuspect> crimeSuspectPermanentAddress;
-	
-	@OneToMany(mappedBy = "victimResidenceAddress")
+    private Set<CrimeVictim> crimeVictimePermanentAddress;
+
+	@OneToMany(mappedBy = "criminalResidenceAddress", cascade = CascadeType.ALL)
+	@JsonIgnore
+    private Set<Criminal> criminalResidenceAddress;
+
+
+	@OneToMany(mappedBy = "criminalPermanentAddress", cascade = CascadeType.ALL)
+	@JsonIgnore
+    private Set<Criminal> criminalPermanentAddress;
+
+
+	@OneToMany(mappedBy = "policestationAddress", cascade = CascadeType.ALL)
+	@JsonIgnore
+    private Set<PoliceStation> policeStationAddress;
+
+
+
+	@OneToMany(mappedBy = "workerResidenceAddress", cascade = CascadeType.ALL)
+	@JsonIgnore
+    private Set<Worker> workerResidenceAddress;
+
+
+	@OneToMany(mappedBy = "workerPermanentAddress", cascade = CascadeType.ALL)
+	@JsonIgnore
+    private Set<Worker> workerPermanentAddress;
+
+
+	@OneToMany(mappedBy = "complainerResidenceAddress", cascade = CascadeType.ALL)
+	@JsonIgnore
+    private Set<Complainer> complainerResidenceAddress;
+
+	@OneToMany(mappedBy = "complainerPermanentAddress", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<CrimeVictim> crimeVictimeResidenceAddress;
-	
-	@OneToMany(mappedBy = "victimPermanentAddress")
+    private Set<Complainer> complainerPermanentAddress;
+
+	@OneToMany(mappedBy = "prisonAddress", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<CrimeVictim> crimeVictimePermanentAddress;
-	
-	
-	@OneToOne(mappedBy = "criminalResidenceAddress")
-    @JsonIgnore
-    private Criminal criminalResidenceAddress;
-	
-	@OneToOne(mappedBy = "criminalPermanentAddress")
-    @JsonIgnore
-    private Criminal criminalPermanentAddress;
-	
-	@OneToOne(mappedBy = "policestationAddress")
-    @JsonIgnore
-    private PoliceStation policeStationAddress;
-	
-	
-	
-	@OneToOne(mappedBy = "workerResidenceAddress")
-    @JsonIgnore
-    private Worker workerResidenceAddress;
-	
-	@OneToOne(mappedBy = "workerPermanentAddress")
-    @JsonIgnore
-    private Worker workerPermanentAddress;
-	
-	
-	@OneToOne(mappedBy = "complainerResidenceAddress")
-    @JsonIgnore
-    private Complainer complainerResidenceAddress;
-	
-	@OneToOne(mappedBy = "complainerPermanentAddress")
-    @JsonIgnore
-    private Complainer complainerPermanentAddress;
-	
-	@OneToOne(mappedBy = "prisonAddress")
-    @JsonIgnore
-    private Prison prisonAddress;
+    private Set<Prison> prisonAddress;
 
 	public Long getAddressID() {
 		return addressID;

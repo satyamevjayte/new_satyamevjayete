@@ -28,13 +28,13 @@ public class PoliceStation {
 
 
 
-    @OneToOne(optional=false)
+    @ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "AddressID")
     private Addresses policestationAddress;
     
     
     
-    @ManyToOne(optional=false)
+    @OneToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "ContactID")
     private Contact policeStationContact;
     
