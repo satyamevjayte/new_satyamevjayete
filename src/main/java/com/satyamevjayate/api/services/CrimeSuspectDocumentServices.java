@@ -7,40 +7,41 @@ import com.satyamevjayate.api.repo.CrimeSuspectDocumentRepository;
 import com.satyamevjayate.api.repo.CrimeSuspectRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
-
+@Service
 public class CrimeSuspectDocumentServices {
     @Autowired
-    private CrimeSuspectDocumentRepository CrimeSuspectDocument_repo;
+    private CrimeSuspectDocumentRepository crimeSuspectDocumentRepository;
     
     @Autowired
-    private CrimeSuspectRepository crimesuspect_repo;
+    private CrimeSuspectRepository crimeSuspectRepository;
 
     public List<CrimeSuspectDocument> listAllCrimeSuspectDocument()
     {
-        return CrimeSuspectDocument_repo.findAll();
+        return crimeSuspectDocumentRepository.findAll();
     }
 
     public CrimeSuspectDocument saveCrimeSuspectDocument(CrimeSuspectDocument CrimeSuspectDocument)
     {
-    	CrimeSuspect crimesuspect = crimesuspect_repo.findById(CrimeSuspectDocument.getCrimeSuspectDocument().getCrimeSuspectID()).orElse(null);
+    	CrimeSuspect crimesuspect = crimeSuspectRepository.findById(CrimeSuspectDocument.getCrimeSuspectDocument().getCrimeSuspectID()).orElse(null);
         if (null == crimesuspect) {
             crimesuspect = new CrimeSuspect();
         }
         crimesuspect.setCrimeSuspectID(CrimeSuspectDocument.getCrimeSuspectDocument().getCrimeSuspectID());
         CrimeSuspectDocument.setCrimeSuspectDocument(crimesuspect);
-    	return CrimeSuspectDocument_repo.save(CrimeSuspectDocument);
+    	return crimeSuspectDocumentRepository.save(CrimeSuspectDocument);
     }
 
-    public CrimeSuspectDocument getCrimeSuspectDocument(BigInteger Id)
+    public CrimeSuspectDocument getCrimeSuspectDocument(Long Id)
     {
-        return CrimeSuspectDocument_repo.findById(Id).get();
+        return crimeSuspectDocumentRepository.findById(Id).get();
     }
 
-    public void deleteCrimeSuspectDocument(BigInteger Id)
+    public void deleteCrimeSuspectDocument(Long Id)
     {
-        CrimeSuspectDocument_repo.deleteById(Id);
+        crimeSuspectDocumentRepository.deleteById(Id);
     }
 }

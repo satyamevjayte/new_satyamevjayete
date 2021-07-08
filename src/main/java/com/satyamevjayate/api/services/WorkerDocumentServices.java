@@ -15,14 +15,14 @@ import java.util.List;
 @Service
 public class WorkerDocumentServices {
     @Autowired
-    private WorkerDocumentRepository WorkerDocument_repo;
+    private WorkerDocumentRepository workerDocumentRepository;
 
     @Autowired
-    private WorkerRepository Worker_repo;
+    private WorkerRepository workerRepository;
     
     public List<WorkerDocument> listAllWorkerDocument()
     {
-        return WorkerDocument_repo.findAll();
+        return workerDocumentRepository.findAll();
     }
 
     public WorkerDocument saveWorkerDocument(WorkerDocument WorkerDocument)
@@ -32,18 +32,18 @@ public class WorkerDocumentServices {
         Worker worker = new Worker();
 //        }
         worker.setWorkerID(WorkerDocument.getWorkerDocument().getWorkerID());
-        Worker_repo.save(worker);
+        workerRepository.save(worker);
         WorkerDocument.setWorkerDocument(worker);
-       return WorkerDocument_repo.save(WorkerDocument);
+       return workerDocumentRepository.save(WorkerDocument);
     }
 
     public WorkerDocument getWorkerDocument(Long Id)
     {
-        return WorkerDocument_repo.findById(Id).get();
+        return workerDocumentRepository.findById(Id).get();
     }
 
     public void deleteWorkerDocument(Long Id)
     {
-        WorkerDocument_repo.deleteById(Id);
+        workerDocumentRepository.deleteById(Id);
     }
 }

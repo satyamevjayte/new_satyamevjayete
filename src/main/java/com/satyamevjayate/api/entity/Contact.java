@@ -45,7 +45,7 @@ public class Contact {
 	
 	@OneToMany(mappedBy = "policeContact")
     @JsonIgnore
-    private Set<Police> policeContact;
+    private List<Police> policeContact;
 	
 	@OneToOne(mappedBy = "suspectContact")
     @JsonIgnore

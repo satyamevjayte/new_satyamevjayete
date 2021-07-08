@@ -12,26 +12,26 @@ import java.util.List;
 @Service
 public class ComplainLawServices {
     @Autowired
-    private ComplainLawRepository ComplaineLawRepository;
+    private ComplainLawRepository complainLawRepository;
 
     public List<ComplainLaw> listAllComplainLaw()
     {
-        return ComplaineLawRepository.findAll();
+        return complainLawRepository.findAll();
     }
 
     public void saveComplainLaw(ComplainLaw complainLaw)
     {
-        ComplaineLawRepository.save(complainLaw);
+        complainLawRepository.save(complainLaw);
     }
 
     public ComplainLaw getComplainLaw(Long Id)
     {
-        return ComplaineLawRepository.findById(Id).get();
+        return complainLawRepository.findById(Id).get();
     }
 
     public void deleteComplainLaw(Long Id)
     {
-        ComplaineLawRepository.deleteById(Id);
+        complainLawRepository.deleteById(Id);
     }
 
 }

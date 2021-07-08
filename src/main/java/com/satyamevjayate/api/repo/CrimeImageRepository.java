@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.math.BigInteger;
 
-public interface CrimeImageRepository extends JpaRepository<CrimeImage, BigInteger> {
+public interface CrimeImageRepository extends JpaRepository<CrimeImage, Long> {
 }

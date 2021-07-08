@@ -14,26 +14,26 @@ import com.satyamevjayate.api.repo.CrimeTypeRepository;
 public class CrimeTypeServices {
 	
 	@Autowired
-	private CrimeTypeRepository crimetype_repo;
+	private CrimeTypeRepository crimeTypeRepository;
 	
 	public List<CrimeType> listAllCrimeType()
 	{
-		return crimetype_repo.findAll();
+		return crimeTypeRepository.findAll();
 	}
 	
 	public void saveCrimeType(CrimeType crimetype)
 	{
-		crimetype_repo.save(crimetype);
+		crimeTypeRepository.save(crimetype);
 	}
 	
-	public CrimeType getCrimeType(BigInteger Id)
+	public CrimeType getCrimeType(Long Id)
 	{
-		return crimetype_repo.findById(Id).get();
+		return crimeTypeRepository.findById(Id).get();
 	}
 	
-	public void deleteCrimeType(BigInteger Id)
+	public void deleteCrimeType(Long Id)
 	{
-		crimetype_repo.deleteById(Id);
+		crimeTypeRepository.deleteById(Id);
 	}
 	
 	

@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.math.BigInteger;
 
-public interface FormVerificationRepository extends JpaRepository<FormVerfication, BigInteger> {
+public interface FormVerificationRepository extends JpaRepository<FormVerfication,Long> {
 }

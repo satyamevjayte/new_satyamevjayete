@@ -15,14 +15,14 @@ import java.util.List;
 @Service
 public class CriminalDocumentServices {
     @Autowired
-    private CriminalDocumentRepository CriminalDocument_repo;
+    private CriminalDocumentRepository criminalDocumentRepository;
     
     @Autowired
-    private CriminalRepository Criminal_repo;
+    private CriminalRepository criminalRepository;
 
     public List<CriminalDocument> listAllCriminalDocument()
     {
-        return CriminalDocument_repo.findAll();
+        return criminalDocumentRepository.findAll();
     }
 
     public CriminalDocument saveCriminalDocument(CriminalDocument CriminalDocument)
@@ -34,16 +34,16 @@ public class CriminalDocumentServices {
 //        criminal.setCriminalID(CriminalDocument.getCriminalDocument().getCriminalID());
 //        Criminal_repo.save(criminal);
 //        CriminalDocument.setCriminalDocument(criminal);
-        return CriminalDocument_repo.save(CriminalDocument);
+        return criminalDocumentRepository.save(CriminalDocument);
     }
 
     public CriminalDocument getCriminalDocument(Long Id)
     {
-        return CriminalDocument_repo.findById(Id).get();
+        return criminalDocumentRepository.findById(Id).get();
     }
 
     public void deleteCriminalDocument(Long Id)
     {
-        CriminalDocument_repo.deleteById(Id);
+        criminalDocumentRepository.deleteById(Id);
     }
 }

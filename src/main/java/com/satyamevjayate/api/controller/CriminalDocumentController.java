@@ -13,18 +13,18 @@ import java.util.List;
 @RestController
 public class CriminalDocumentController {
     @Autowired
-    private CriminalDocumentServices  CriminalDocument_Services;
+    private CriminalDocumentServices  criminalDocumentServices;
 
     @GetMapping("/criminaldocument")
     public List<CriminalDocument> getAllCriminalDocument() {
-        return CriminalDocument_Services.listAllCriminalDocument();
+        return criminalDocumentServices.listAllCriminalDocument();
     }
 
     @GetMapping("/criminaldocument/{id}")
     public CriminalDocument getCriminalDocument(@PathVariable Long id)
     {
 
-        CriminalDocument CriminalDocument= CriminalDocument_Services.getCriminalDocument(id);
+        CriminalDocument CriminalDocument= criminalDocumentServices.getCriminalDocument(id);
         return CriminalDocument;
 
 
@@ -34,7 +34,7 @@ public class CriminalDocumentController {
     @PostMapping("/criminaldocument")
     public String addCriminalDocument(@RequestBody CriminalDocument CriminalDocument)
     {
-        CriminalDocument_Services.saveCriminalDocument(CriminalDocument);;
+        criminalDocumentServices.saveCriminalDocument(CriminalDocument);;
         return "CriminalDocument Add Successfully";
     }
 
@@ -42,7 +42,7 @@ public class CriminalDocumentController {
     @DeleteMapping("/criminaldocument/{id}")
     public String deleteCriminalDocument(@PathVariable Long id)
     {
-        CriminalDocument_Services.deleteCriminalDocument(id);;
+        criminalDocumentServices.deleteCriminalDocument(id);;
         return "Delete CriminalDocument Successfully";
     }
 
@@ -50,7 +50,7 @@ public class CriminalDocumentController {
     public ResponseEntity<Object> editCriminalDocument(@RequestBody CriminalDocument CriminalDocument, @PathVariable Long id) {
 
         CriminalDocument.setDocumentID(id);
-        CriminalDocument_Services.saveCriminalDocument(CriminalDocument);
+        criminalDocumentServices.saveCriminalDocument(CriminalDocument);
 
         return ResponseEntity.noContent().build();
     }

@@ -22,7 +22,7 @@ public class CrimeSuspect {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="CrimeSuspectID")
-    private BigInteger crimeSuspectID;
+    private Long crimeSuspectID;
 
     
     @ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
@@ -49,6 +49,6 @@ public class CrimeSuspect {
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "crimeSuspectDocument")
     @JsonIgnore
-    private Set<CrimeSuspectDocument> crimeSuspectDocument;
+    private List<CrimeSuspectDocument> crimeSuspectDocument;
 
 }

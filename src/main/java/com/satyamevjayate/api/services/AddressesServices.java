@@ -14,26 +14,26 @@ import com.satyamevjayate.api.repo.AddressesRepository;
 public class AddressesServices {
 	
 	@Autowired
-	private AddressesRepository Address_repo;
+	private AddressesRepository addressesRepository;
 	
 	public List<Addresses> listAllAddresses()
 	{
-		return Address_repo.findAll();
+		return addressesRepository.findAll();
 	}
 	
 	public void saveAddress(Addresses address)
 	{
-		Address_repo.save(address);
+		addressesRepository.save(address);
 	}
 	
 	public Addresses getAddress(Long Id)
 	{
-		return Address_repo.findById(Id).get();
+		return addressesRepository.findById(Id).get();
 	}
 	
 	public void deleteAddress(Long Id)
 	{
-		Address_repo.deleteById(Id);
+		addressesRepository.deleteById(Id);
 	}
 
 }

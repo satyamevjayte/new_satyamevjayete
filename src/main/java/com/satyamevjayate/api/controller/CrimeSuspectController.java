@@ -11,18 +11,18 @@ import java.util.List;
 @RestController
 public class CrimeSuspectController {  
     @Autowired
-private com.satyamevjayate.api.services.CrimeSuspectServices CrimeSuspect_Services;
+private com.satyamevjayate.api.services.CrimeSuspectServices crimeSuspectServices;
 
     @GetMapping("/crimesuspect")
     public List<CrimeSuspect> getAllCrimeSuspect() {
-        return CrimeSuspect_Services.listAllCrimeSuspect();
+        return crimeSuspectServices.listAllCrimeSuspect();
     }
 
     @GetMapping("/crimesuspect/{id}")
-    public CrimeSuspect getCrimeSuspect(@PathVariable BigInteger id)
+    public CrimeSuspect getCrimeSuspect(@PathVariable Long id)
     {
 
-        CrimeSuspect CrimeSuspect= CrimeSuspect_Services.getCrimeSuspect(id);
+        CrimeSuspect CrimeSuspect= crimeSuspectServices.getCrimeSuspect(id);
         return CrimeSuspect;
 
 
@@ -32,24 +32,24 @@ private com.satyamevjayate.api.services.CrimeSuspectServices CrimeSuspect_Servic
     @PostMapping("/crimesuspect")
     public String addCrimeSuspect(@RequestBody CrimeSuspect CrimeSuspect)
     {
-        CrimeSuspect_Services.saveCrimeSuspect(CrimeSuspect);;
+        crimeSuspectServices.saveCrimeSuspect(CrimeSuspect);;
         return "CrimeSuspect Add Successfully";
     }
 
 
     @DeleteMapping("/crimesuspect/{id}")
-    public String deleteCrimeSuspect(@PathVariable BigInteger id)
+    public String deleteCrimeSuspect(@PathVariable Long id)
     {
-        CrimeSuspect_Services.deleteCrimeSuspect(id);;
+        crimeSuspectServices.deleteCrimeSuspect(id);;
         return "Delete CrimeSuspect Successfully";
     }
 
     @PutMapping("/crimesuspect/{id}")
-    public ResponseEntity<Object> editCrimeSuspect(@RequestBody CrimeSuspect CrimeSuspect, @PathVariable BigInteger id) {
+    public ResponseEntity<Object> editCrimeSuspect(@RequestBody CrimeSuspect CrimeSuspect, @PathVariable Long id) {
 
         CrimeSuspect.setCrimeSuspectID(id);
 
-        CrimeSuspect_Services.saveCrimeSuspect(CrimeSuspect);
+        crimeSuspectServices.saveCrimeSuspect(CrimeSuspect);
 
         return ResponseEntity.noContent().build();
     }

@@ -17,7 +17,7 @@ public class PrisonerServices {
     private PrisonersReporsitory prisonersReporsitory;
     
     @Autowired
-    private PersonRepository person_repo;
+    private PersonRepository personRepository;
 
     public List<Prisoners> listAllPrisoners()
     {

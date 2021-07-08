@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.satyamevjayate.api.entity.CrimeType;
 
-public interface CrimeTypeRepository extends JpaRepository<CrimeType,BigInteger>{
+public interface CrimeTypeRepository extends JpaRepository<CrimeType,Long>{
 
 }

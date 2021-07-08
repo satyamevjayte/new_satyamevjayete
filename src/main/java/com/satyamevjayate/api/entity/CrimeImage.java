@@ -18,7 +18,7 @@ public class CrimeImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="CrimeImageID")
-    private BigInteger crimeImageID;
+    private Long crimeImageID;
 //    @Column(name="CrimeID")
 //    private BigInteger CrimeID;
     

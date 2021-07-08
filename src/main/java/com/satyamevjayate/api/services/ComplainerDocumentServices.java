@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class ComplainerDocumentServices {
     @Autowired
-    private ComplainerDocumentRepository ComplainerDocument_repo;
+    private ComplainerDocumentRepository complainerDocumentRepository;
     
     @Autowired
     private ComplainerRepository Complainer_repo;
@@ -20,22 +20,22 @@ public class ComplainerDocumentServices {
     public List<ComplainerDocument> listAllComplainerDocument()
     {
     	
-        return ComplainerDocument_repo.findAll();
+        return complainerDocumentRepository.findAll();
     }
 
     public void saveComplainerDocument(ComplainerDocument complainerDocument)
     {
-    	
-        ComplainerDocument_repo.save(complainerDocument);
+
+        complainerDocumentRepository.save(complainerDocument);
     }
 
     public ComplainerDocument getComplainerDocument(Long Id)
     {
-        return ComplainerDocument_repo.findById(Id).get();
+        return complainerDocumentRepository.findById(Id).get();
     }
 
     public void deleteComplainerDocument(Long Id)
     {
-        ComplainerDocument_repo.deleteById(Id);
+        complainerDocumentRepository.deleteById(Id);
     }
 }

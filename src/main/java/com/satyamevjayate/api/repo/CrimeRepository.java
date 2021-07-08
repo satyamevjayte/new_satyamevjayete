@@ -13,7 +13,7 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
-public interface CrimeRepository extends JpaRepository<Crime, BigInteger> {
+public interface CrimeRepository extends JpaRepository<Crime, Long> {
     @Query("select new com.satyamevjayate.api.model.CRimeTypewiseCrime( count(*),ct.crimeType)\n" +
             "from Crime c,CrimeType ct\n" +
             "where c.crimeType=ct.crimeTypeId\n" +

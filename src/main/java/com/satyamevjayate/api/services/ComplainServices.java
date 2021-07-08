@@ -13,25 +13,25 @@ import java.util.List;
 public class ComplainServices {
 
     @Autowired
-    private ComplianRepository Complian_repo;
+    private ComplianRepository complianRepository;
 
     public List<Complain> listAllComplain()
     {
-        return Complian_repo.findAll();
+        return complianRepository.findAll();
     }
 
     public void saveComplain(Complain complain)
     {
-        Complian_repo.save(complain);
+        complianRepository.save(complain);
     }
 
     public Complain getComplain(Long Id)
     {
-        return Complian_repo.findById(Id).get();
+        return complianRepository.findById(Id).get();
     }
 
     public void deleteComplain(Long Id)
     {
-        Complian_repo.deleteById(Id);
+        complianRepository.deleteById(Id);
     }
 }

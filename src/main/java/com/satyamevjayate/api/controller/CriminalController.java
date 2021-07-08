@@ -1,5 +1,6 @@
 package com.satyamevjayate.api.controller;
 
+import com.satyamevjayate.api.entity.CrimeVictimDocument;
 import com.satyamevjayate.api.entity.Criminal;
 import com.satyamevjayate.api.services.CriminalServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,12 +57,7 @@ public class CriminalController {
         Long count=criminalServices.findTotalCriminal();
         return count;
     }
-//    @PutMapping("/criminal")
-//    public ResponseEntity<Object> editCriminal(@RequestBody Criminal Criminal) {
-//
-//        Criminal_Service.saveCriminal(Criminal);
-//
-//        return ResponseEntity.noContent().build();
-//    }
+
+
 
 }

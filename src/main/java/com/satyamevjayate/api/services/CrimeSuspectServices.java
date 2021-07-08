@@ -20,45 +20,45 @@ import java.util.List;
 @Service
 public class CrimeSuspectServices {
     @Autowired
-    private CrimeSuspectRepository CrimeSuspect_repo;
+    private CrimeSuspectRepository crimeSuspectRepository;
     
     @Autowired
-    private AddressesRepository address_repo;
+    private AddressesRepository addressesRepository;
     
     @Autowired
-    private ContactRepository contact_repo;
+    private ContactRepository contactRepository;
     
     @Autowired
-    private PersonRepository person_repo;
+    private PersonRepository personRepository;
     
     @Autowired
-    private CrimeRepository crime_repo;
+    private CrimeRepository crimeRepository;
     
 
     public List<CrimeSuspect> listAllCrimeSuspect()
     {
-        return CrimeSuspect_repo.findAll();
+        return crimeSuspectRepository.findAll();
     }
 
     public CrimeSuspect saveCrimeSuspect(CrimeSuspect CrimeSuspect)
     {
-    	
 
-    	address_repo.save(CrimeSuspect.getSuspectPermanentAddress());
- 	   	address_repo.save(CrimeSuspect.getSuspectResidenceAddress());
- 	   	contact_repo.save(CrimeSuspect.getSuspectContact());
- 	   	person_repo.save(CrimeSuspect.getSuspectPerson());
+
+        addressesRepository.save(CrimeSuspect.getSuspectPermanentAddress());
+        addressesRepository.save(CrimeSuspect.getSuspectResidenceAddress());
+        contactRepository.save(CrimeSuspect.getSuspectContact());
+        personRepository.save(CrimeSuspect.getSuspectPerson());
  	     
-	    return CrimeSuspect_repo.save(CrimeSuspect);
+	    return crimeSuspectRepository.save(CrimeSuspect);
     }
 
-    public CrimeSuspect getCrimeSuspect(BigInteger Id)
+    public CrimeSuspect getCrimeSuspect(Long Id)
     {
-        return CrimeSuspect_repo.findById(Id).get();
+        return crimeSuspectRepository.findById(Id).get();
     }
 
-    public void deleteCrimeSuspect(BigInteger Id)
+    public void deleteCrimeSuspect(Long Id)
     {
-        CrimeSuspect_repo.deleteById(Id);
+        crimeSuspectRepository.deleteById(Id);
     }
 }

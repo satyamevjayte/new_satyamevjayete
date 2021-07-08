@@ -19,23 +19,23 @@ import java.util.List;
 @Service
 public class CrimeVictimServices {
     @Autowired
-    private CrimeVictimRepository CrimeVictim_repo;
+    private CrimeVictimRepository crimeVictimRepository;
     
     @Autowired
-    private AddressesRepository address_repo;
+    private AddressesRepository addressesRepository;
     
     @Autowired
-    private ContactRepository contact_repo;
+    private ContactRepository contactRepository;
     
     @Autowired
-    private PersonRepository person_repo;
+    private PersonRepository personRepository;
     
     @Autowired
-    private CrimeRepository crime_repo;
+    private CrimeRepository crimeRepository;
 
     public List<CrimeVictim> listAllCrimeVictim()
     {
-        return CrimeVictim_repo.findAll();
+        return crimeVictimRepository.findAll();
     }
 
     public CrimeVictim saveCrimeVictim(CrimeVictim CrimeVictim)
@@ -87,27 +87,27 @@ public class CrimeVictimServices {
 //	        person_repo.save(person);
 //	        CrimeVictim.setVictimPerson(person);
 //	     
-    	
-    	address_repo.save(CrimeVictim.getVictimPermanentAddress());
-    	address_repo.save(CrimeVictim.getVictimResidenceAddress());
-    	contact_repo.save(CrimeVictim.getCrimeVictimeContact());
-    	person_repo.save(CrimeVictim.getVictimPerson());
+
+        addressesRepository.save(CrimeVictim.getVictimPermanentAddress());
+        addressesRepository.save(CrimeVictim.getVictimResidenceAddress());
+        contactRepository.save(CrimeVictim.getCrimeVictimeContact());
+        personRepository.save(CrimeVictim.getVictimPerson());
 //	    Crime crime = crime_repo.findById(CrimeVictim.getCrimeVictimCrimeID().getCrimeID()).orElse(null);
 //	        if (null == crime) {
 	          Crime crime = new Crime();
 //	        }
 	        crime.setCrimeID(CrimeVictim.getCrimeVictimCrimeID().getCrimeID());
 	        CrimeVictim.setCrimeVictimCrimeID(crime);
-        return CrimeVictim_repo.save(CrimeVictim);
+        return crimeVictimRepository.save(CrimeVictim);
     }
 
-    public CrimeVictim getCrimeVictim(BigInteger Id)
+    public CrimeVictim getCrimeVictim(Long Id)
     {
-        return CrimeVictim_repo.findById(Id).get();
+        return crimeVictimRepository.findById(Id).get();
     }
 
-    public void deleteCrimeVictim(BigInteger Id)
+    public void deleteCrimeVictim(Long Id)
     {
-        CrimeVictim_repo.deleteById(Id);
+        crimeVictimRepository.deleteById(Id);
     }
 }

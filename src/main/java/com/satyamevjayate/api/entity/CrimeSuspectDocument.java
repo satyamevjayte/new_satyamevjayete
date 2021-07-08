@@ -12,12 +12,12 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="crimesuspectdocument")
+@Table(name="crimesuspect_document")
 public class CrimeSuspectDocument {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="DocumentID")
-    private BigInteger documentID;
+    private Long documentID;
     
     @ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "CrimeSuspectID")

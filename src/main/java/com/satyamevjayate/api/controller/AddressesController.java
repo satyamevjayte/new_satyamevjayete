@@ -21,24 +21,24 @@ import com.satyamevjayate.api.services.AddressesServices;
 public class AddressesController {
 	
 	@Autowired
-	private AddressesServices address_Services;
+	private AddressesServices addressServices;
 	
 	@GetMapping("/address")
 	public List<Addresses> getAllAddress() {
-		return address_Services.listAllAddresses();
+		return addressServices.listAllAddresses();
 	}
 	
 	@GetMapping("/address/{id}")
 	public Addresses getAddresses(@PathVariable Long id)
 	{
-		Addresses address= address_Services.getAddress(id);
+		Addresses address= addressServices.getAddress(id);
 		return address;
 	}
 	
 	@PostMapping("/address")
 	public String addAddress(@RequestBody Addresses address)
 	{
-		address_Services.saveAddress(address);
+		addressServices.saveAddress(address);
 		return "Address Add Successfully";
 	}	
 	
@@ -46,7 +46,7 @@ public class AddressesController {
 	@DeleteMapping("/address/{id}")
 	public String deleteAddress(@PathVariable Long id)
 	{
-		address_Services.deleteAddress(id);
+		addressServices.deleteAddress(id);
 	    return "Delete Address Successfully";
 	}
 	
@@ -56,8 +56,8 @@ public class AddressesController {
 	
 
 		address.setAddressID(id);;
-		
-		address_Services.saveAddress(address);
+
+		addressServices.saveAddress(address);
 
 		return ResponseEntity.noContent().build();
 	}

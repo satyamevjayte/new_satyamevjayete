@@ -18,7 +18,7 @@ public class PrisonServices {
     private PrisonRepository prisonRepository;
     
     @Autowired
-    private AddressesRepository address_repo;
+    private AddressesRepository addressesRepository;
 
     public List<Prison> listAllPrison()
     {
@@ -40,7 +40,7 @@ public class PrisonServices {
 //
 //	        address_repo.save(address);
 //	        prison.setPrisonAddress(address);
-    	address_repo.save(prison.getPrisonAddress());
+        addressesRepository.save(prison.getPrisonAddress());
         prisonRepository.save(prison);
         return prison.getPrisonID();
     }

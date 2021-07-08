@@ -46,73 +46,73 @@ public class Addresses {
 
 	@OneToMany(mappedBy = "policeResidenceAddress", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Police> policeResidenceAddress;
+    private List<Police> policeResidenceAddress;
 
 	@OneToMany(mappedBy = "policePermanentAddress", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Police> policePermanentAddress;
+    private List<Police> policePermanentAddress;
 
 	@OneToMany(mappedBy = "crimeResidenceAddress", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Crime> crimeResidenceAddress;
+    private List<Crime> crimeResidenceAddress;
 
 
 	@OneToMany(mappedBy = "suspectResidenceAddress", cascade = CascadeType.ALL)
 	@JsonIgnore
-    private Set<CrimeSuspect> crimeSuspectResidenceAddress;
+    private List<CrimeSuspect> crimeSuspectResidenceAddress;
 
 
 	@OneToMany(mappedBy = "suspectPermanentAddress", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<CrimeSuspect> crimeSuspectPermanentAddress;
+    private List<CrimeSuspect> crimeSuspectPermanentAddress;
 
 
 	@OneToMany(mappedBy = "victimResidenceAddress", cascade = CascadeType.ALL)
 	@JsonIgnore
-    private Set<CrimeVictim> crimeVictimeResidenceAddress;
+    private List<CrimeVictim> crimeVictimeResidenceAddress;
 
 
 	@OneToMany(mappedBy = "victimPermanentAddress", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<CrimeVictim> crimeVictimePermanentAddress;
+    private List<CrimeVictim> crimeVictimePermanentAddress;
 
 	@OneToMany(mappedBy = "criminalResidenceAddress", cascade = CascadeType.ALL)
 	@JsonIgnore
-    private Set<Criminal> criminalResidenceAddress;
+    private List<Criminal> criminalResidenceAddress;
 
 
 	@OneToMany(mappedBy = "criminalPermanentAddress", cascade = CascadeType.ALL)
 	@JsonIgnore
-    private Set<Criminal> criminalPermanentAddress;
+    private List<Criminal> criminalPermanentAddress;
 
 
 	@OneToMany(mappedBy = "policestationAddress", cascade = CascadeType.ALL)
 	@JsonIgnore
-    private Set<PoliceStation> policeStationAddress;
+    private List<PoliceStation> policeStationAddress;
 
 
 
 	@OneToMany(mappedBy = "workerResidenceAddress", cascade = CascadeType.ALL)
 	@JsonIgnore
-    private Set<Worker> workerResidenceAddress;
+    private List<Worker> workerResidenceAddress;
 
 
 	@OneToMany(mappedBy = "workerPermanentAddress", cascade = CascadeType.ALL)
 	@JsonIgnore
-    private Set<Worker> workerPermanentAddress;
+    private List<Worker> workerPermanentAddress;
 
 
 	@OneToMany(mappedBy = "complainerResidenceAddress", cascade = CascadeType.ALL)
 	@JsonIgnore
-    private Set<Complainer> complainerResidenceAddress;
+    private List<Complainer> complainerResidenceAddress;
 
 	@OneToMany(mappedBy = "complainerPermanentAddress", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Complainer> complainerPermanentAddress;
+    private List<Complainer> complainerPermanentAddress;
 
 	@OneToMany(mappedBy = "prisonAddress", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Prison> prisonAddress;
+    private List<Prison> prisonAddress;
 
 	public Long getAddressID() {
 		return addressID;

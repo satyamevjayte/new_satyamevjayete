@@ -7,40 +7,42 @@ import com.satyamevjayate.api.repo.CrimeVictimDocumentRepository;
 import com.satyamevjayate.api.repo.CrimeVictimRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
 
+@Service
 public class CrimeVictimDocumentService {
     @Autowired
-    private CrimeVictimDocumentRepository CrimeVictimDocument_repo;
+    private CrimeVictimDocumentRepository crimeVictimDocumentRepository;
     
     @Autowired
-    private CrimeVictimRepository CrimeVictim_repo;
+    private CrimeVictimRepository crimeVictimRepository;
 
     public List<CrimeVictimDocument> listAllCrimeVictimDocument()
     {
-        return CrimeVictimDocument_repo.findAll();
+        return crimeVictimDocumentRepository.findAll();
     }
 
     public CrimeVictimDocument saveCrimeVictimDocument(CrimeVictimDocument CrimeVictimDocument)
     {
-    	CrimeVictim crimevictim = CrimeVictim_repo.findById(CrimeVictimDocument.getCrimeVictimDocumentID().getCrimeVictimID()).orElse(null);
+    	CrimeVictim crimevictim = crimeVictimRepository.findById(CrimeVictimDocument.getCrimeVictimDocumentID().getCrimeVictimID()).orElse(null);
         if (null == crimevictim) {
         	crimevictim = new CrimeVictim();
         }
         crimevictim.setCrimeVictimID(CrimeVictimDocument.getCrimeVictimDocumentID().getCrimeVictimID());
         CrimeVictimDocument.setCrimeVictimDocumentID(crimevictim);
-        return CrimeVictimDocument_repo.save(CrimeVictimDocument);
+        return crimeVictimDocumentRepository.save(CrimeVictimDocument);
     }
 
-    public CrimeVictimDocument getCrimeVictimDocument(BigInteger Id)
+    public CrimeVictimDocument getCrimeVictimDocument(Long Id)
     {
-        return CrimeVictimDocument_repo.findById(Id).get();
+        return crimeVictimDocumentRepository.findById(Id).get();
     }
 
-    public void deleteCrimeVictimDocument(BigInteger Id)
+    public void deleteCrimeVictimDocument(Long Id)
     {
-        CrimeVictimDocument_repo.deleteById(Id);
+        crimeVictimDocumentRepository.deleteById(Id);
     }
 }

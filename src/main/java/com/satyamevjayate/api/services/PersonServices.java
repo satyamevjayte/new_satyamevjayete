@@ -11,25 +11,25 @@ import java.util.List;
 @Service
 public class PersonServices {
     @Autowired
-    private PersonRepository person_repository;
+    private PersonRepository personRepository;
 
     public List<Person> listAllPerson()
     {
-        return person_repository.findAll();
+        return personRepository.findAll();
     }
 
     public void savePerson(Person Person)
     {
-        person_repository.save(Person);
+        personRepository.save(Person);
     }
 
-    public Person getPerson(BigInteger Id)
+    public Person getPerson(Long Id)
     {
-        return person_repository.findById(Id).get();
+        return personRepository.findById(Id).get();
     }
 
-    public void deletePerson(BigInteger Id)
+    public void deletePerson(Long Id)
     {
-        person_repository.deleteById(Id);
+        personRepository.deleteById(Id);
     }
 }

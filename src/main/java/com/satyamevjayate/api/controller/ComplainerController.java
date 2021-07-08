@@ -12,24 +12,24 @@ import java.util.List;
 @RestController
 public class ComplainerController {
     @Autowired
-    private ComplainerServices complainer_Services;
+    private ComplainerServices complainerServices;
 
     @GetMapping("/complainers")
     public List<Complainer> getAllComplainer() {
-        return complainer_Services.listAllComplainer();
+        return complainerServices.listAllComplainer();
     }
 
     @GetMapping("/complainers/{id}")
     public Complainer getComplainer(@PathVariable Long id)
     {
-        Complainer complainer= complainer_Services.getComplainer(id);
+        Complainer complainer= complainerServices.getComplainer(id);
         return complainer;
     }
 
     @PostMapping("/complainers")
     public String addComplainer(@RequestBody Complainer complainer)
     {
-        complainer_Services.saveComplainer(complainer);
+        complainerServices.saveComplainer(complainer);
         return "Complain Add Successfully";
     }
 
@@ -37,7 +37,7 @@ public class ComplainerController {
     @DeleteMapping("/complainers/{id}")
     public String deleteComplainer(@PathVariable Long id)
     {
-        complainer_Services.deleteComplainer(id);
+        complainerServices.deleteComplainer(id);
         return "Delete complain Successfully";
     }
 
@@ -48,7 +48,7 @@ public class ComplainerController {
 
         complainer.setComplainerID(id);;
 
-        complainer_Services.saveComplainer(complainer);
+        complainerServices.saveComplainer(complainer);
 
         return ResponseEntity.noContent().build();
     }

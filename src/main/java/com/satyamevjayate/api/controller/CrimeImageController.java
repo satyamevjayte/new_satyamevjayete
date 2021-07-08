@@ -10,18 +10,18 @@ import java.util.List;
 @RestController
 public class CrimeImageController{
     @Autowired
-    private com.satyamevjayate.api.services.CrimeImageServices CrimeImage_Services;
+    private com.satyamevjayate.api.services.CrimeImageServices crimeImageServices;
 
     @GetMapping("/crimeImage")
     public List<CrimeImage> getAllCrimeImage() {
-        return CrimeImage_Services.listAllCrimeImage();
+        return crimeImageServices.listAllCrimeImage();
     }
 
     @GetMapping("/crimeImage/{id}")
-    public CrimeImage getCrimeImage(@PathVariable BigInteger id)
+    public CrimeImage getCrimeImage(@PathVariable Long id)
     {
 
-        CrimeImage CrimeImage= CrimeImage_Services.getCrimeImage(id);
+        CrimeImage CrimeImage= crimeImageServices.getCrimeImage(id);
         return CrimeImage;
 
 
@@ -31,24 +31,24 @@ public class CrimeImageController{
     @PostMapping("/crimeImage")
     public String addCrimeImage(@RequestBody CrimeImage CrimeImage)
     {
-        CrimeImage_Services.saveCrimeImage(CrimeImage);;
+        crimeImageServices.saveCrimeImage(CrimeImage);;
         return "CrimeImage Add Successfully";
     }
 
 
     @DeleteMapping("/crimeImage/{id}")
-    public String deleteCrimeImage(@PathVariable BigInteger id)
+    public String deleteCrimeImage(@PathVariable Long id)
     {
-        CrimeImage_Services.deleteCrimeImage(id);;
+        crimeImageServices.deleteCrimeImage(id);;
         return "Delete CrimeImage Successfully";
     }
 
     @PutMapping("/crimeImage/{id}")
-    public ResponseEntity<Object> editCrimeImage(@RequestBody CrimeImage CrimeImage, @PathVariable BigInteger id) {
+    public ResponseEntity<Object> editCrimeImage(@RequestBody CrimeImage CrimeImage, @PathVariable Long id) {
 
         CrimeImage.setCrimeImageID(id);
 
-        CrimeImage_Services.saveCrimeImage(CrimeImage);
+        crimeImageServices.saveCrimeImage(CrimeImage);
 
         return ResponseEntity.noContent().build();
     }

@@ -16,21 +16,21 @@ import java.util.List;
 @Service
 public class WorkerService {
     @Autowired
-    private WorkerRepository Worker_repo;
+    private WorkerRepository workerRepository;
     
     @Autowired
-    private AddressesRepository address_repo;
+    private AddressesRepository addressesRepository;
     
     @Autowired
-    private ContactRepository contact_repo;
+    private ContactRepository contactRepository;
     
     @Autowired
-    private PersonRepository person_repo;
+    private PersonRepository personRepository;
     
 
     public List<Worker> listAllWorker()
     {
-        return Worker_repo.findAll();
+        return workerRepository.findAll();
     }
 
     public Worker saveWorker(Worker worker)
@@ -81,16 +81,16 @@ public class WorkerService {
 //        person.setPersonImage(worker.getWorkerPerson().getPersonImage());
 //        person_repo.save(person);
 //        worker.setWorkerPerson(person);
-    	
-    	address_repo.save(worker.getWorkerPermanentAddress());
-    	address_repo.save(worker.getWorkerResidenceAddress());
-    	contact_repo.save(worker.getWorkerContact());
-    	person_repo.save(worker.getWorkerPerson());
-    	return Worker_repo.save(worker);
+
+        addressesRepository.save(worker.getWorkerPermanentAddress());
+        addressesRepository.save(worker.getWorkerResidenceAddress());
+        contactRepository.save(worker.getWorkerContact());
+        personRepository.save(worker.getWorkerPerson());
+    	return workerRepository.save(worker);
     }
     public Worker editWorker(Worker worker)
     {
-    	Addresses address = address_repo.findById(worker.getWorkerPermanentAddress().getAddressID()).orElse(null);
+    	Addresses address = addressesRepository.findById(worker.getWorkerPermanentAddress().getAddressID()).orElse(null);
         if (null == address) {
         	   address = new Addresses();
         }
@@ -104,7 +104,7 @@ public class WorkerService {
         worker.setWorkerPermanentAddress(address);
         
         
-      Addresses residenceAddress = address_repo.findById(worker.getWorkerResidenceAddress().getAddressID()).orElse(null);
+      Addresses residenceAddress = addressesRepository.findById(worker.getWorkerResidenceAddress().getAddressID()).orElse(null);
         if (null == residenceAddress) {
         	residenceAddress = new Addresses();
         }
@@ -117,7 +117,7 @@ public class WorkerService {
     
       worker.setWorkerResidenceAddress(residenceAddress);
         
-    Contact contact=contact_repo.findById(worker.getWorkerContact().getContactId()).orElse(null);
+    Contact contact=contactRepository.findById(worker.getWorkerContact().getContactId()).orElse(null);
     	if(null==contact)
     	{
     		contact=new Contact();
@@ -127,7 +127,7 @@ public class WorkerService {
 	  
 	    worker.setWorkerContact(contact);
 	    
-	Person person = person_repo.findById(worker.getWorkerPerson().getPersonId()).orElse(null);
+	Person person = personRepository.findById(worker.getWorkerPerson().getPersonId()).orElse(null);
         if (null == person) {
         	 person = new Person();
         }
@@ -138,16 +138,16 @@ public class WorkerService {
         person.setPersonImage(worker.getWorkerPerson().getPersonImage());
         worker.setWorkerPerson(person);
     
-       return Worker_repo.save(worker);
+       return workerRepository.save(worker);
     }
 
-    public Worker getWorker(BigInteger Id)
+    public Worker getWorker(Long Id)
     {
-        return Worker_repo.findById(Id).get();
+        return workerRepository.findById(Id).get();
     }
 
-    public void deleteWorker(BigInteger Id)
+    public void deleteWorker(Long Id)
     {
-        Worker_repo.deleteById(Id);
+        workerRepository.deleteById(Id);
     }
 }

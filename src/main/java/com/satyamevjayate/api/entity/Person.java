@@ -22,7 +22,7 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="PersonId")
-    private BigInteger personId;
+    private Long personId;
 
     @Column(name="FirstName")
     private String firstName;
@@ -41,27 +41,27 @@ public class Person {
 
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Police> police;
+    private List<Police> police;
 
     @OneToMany(mappedBy = "suspectPerson", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<CrimeSuspect> crimeSuspect;
+    private List<CrimeSuspect> crimeSuspect;
 
     @OneToMany(mappedBy = "victimPerson", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<CrimeVictim> crimeVictim;
+    private List<CrimeVictim> crimeVictim;
 
     @OneToMany(mappedBy = "criminalPerson", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Criminal> criminal;
+    private List<Criminal> criminal;
 
     @OneToMany(mappedBy = "workerPerson", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Worker> worker;
+    private List<Worker> worker;
 
     @OneToMany(mappedBy = "complainerPerson", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Complainer> complainerPerson;
+    private List<Complainer> complainerPerson;
     
   
     

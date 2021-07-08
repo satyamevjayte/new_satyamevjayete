@@ -19,20 +19,20 @@ import java.util.List;
 public class ComplainerServices {
 
     @Autowired
-    private ComplainerRepository Complainer_repo;
+    private ComplainerRepository complainerRepository;
     
     @Autowired
-	private AddressesRepository address_repo;
+	private AddressesRepository addressesRepository;
 	
 	@Autowired
-	private ContactRepository contact_repo;
+	private ContactRepository contactRepository;
 	
 	@Autowired
-	private PersonRepository person_repo;
+	private PersonRepository personRepository;
 
     public List<Complainer> listAllComplainer()
     {
-        return Complainer_repo.findAll();
+        return complainerRepository.findAll();
     }
 
     public void saveComplainer(Complainer complainer)
@@ -88,21 +88,21 @@ public class ComplainerServices {
 //	        
 //	        person_repo.save(person);
 //	        complainer.setComplainerPerson(person);
-    	
-    	   address_repo.save(complainer.getComplainerPermanentAddress());
-    	   address_repo.save(complainer.getComplainerResidenceAddress());
-    	   contact_repo.save(complainer.getComplainerContact());
-    	   person_repo.save(complainer.getComplainerPerson());
-    	   Complainer_repo.save(complainer);
+
+        addressesRepository.save(complainer.getComplainerPermanentAddress());
+        addressesRepository.save(complainer.getComplainerResidenceAddress());
+        contactRepository.save(complainer.getComplainerContact());
+        personRepository.save(complainer.getComplainerPerson());
+        complainerRepository.save(complainer);
     }
 
     public Complainer getComplainer(Long Id)
     {
-        return Complainer_repo.findById(Id).get();
+        return complainerRepository.findById(Id).get();
     }
 
     public void deleteComplainer(Long Id)
     {
-        Complainer_repo.deleteById(Id);
+        complainerRepository.deleteById(Id);
     }
 }

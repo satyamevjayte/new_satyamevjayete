@@ -14,18 +14,18 @@ import java.util.List;
 @Service
 public class PoliceStationServices {
     @Autowired
-    private PoliceStationRepository PoliceStation_Repo;
+    private PoliceStationRepository policeStationRepository;
     
     @Autowired
-    private AddressesRepository address_repo;
+    private AddressesRepository addressesRepository;
     
     @Autowired
-    private ContactRepository contact_repo;
+    private ContactRepository contactRepository;
 
     public List<PoliceStation> listAll_PoliceStation()
     {
-        System.out.println(PoliceStation_Repo.findAll());
-        return PoliceStation_Repo.findAll();
+        System.out.println(policeStationRepository.findAll());
+        return policeStationRepository.findAll();
     }
 
     public PoliceStation save_PoliceStation(PoliceStation PoliceStation)
@@ -55,20 +55,20 @@ public class PoliceStationServices {
 //		    contact.setContactEmail(PoliceStation.getPoliceStationContact().getContactEmail());
 //		    contact_repo.save(contact);
 //		    PoliceStation.setPoliceStationContact(contact);
-    	
-    	address_repo.save(PoliceStation.getPolicestationAddress());
-    	contact_repo.save(PoliceStation.getPoliceStationContact());
-       return PoliceStation_Repo.save(PoliceStation);
+
+        addressesRepository.save(PoliceStation.getPolicestationAddress());
+        contactRepository.save(PoliceStation.getPoliceStationContact());
+       return policeStationRepository.save(PoliceStation);
     }
 
     public PoliceStation getPoliceStation(Long Id)
     {
-        return PoliceStation_Repo.findById(Id).get();
+        return policeStationRepository.findById(Id).get();
     }
 
     public void delete_PoliceStation(Long Id)
     {
-        PoliceStation_Repo.deleteById(Id);
+        policeStationRepository.deleteById(Id);
     }
 
 }

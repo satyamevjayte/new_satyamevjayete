@@ -9,25 +9,25 @@ import java.util.List;
 
 public class FormVerificationServices {
     @Autowired
-    private FormVerificationRepository FormVerification_repo;
+    private FormVerificationRepository formVerificationRepository;
 
     public List<FormVerfication> listAllFormVerification()
     {
-        return FormVerification_repo.findAll();
+        return formVerificationRepository.findAll();
     }
 
     public void saveFormVerification(FormVerfication FormVerification)
     {
-        FormVerification_repo.save(FormVerification);
+        formVerificationRepository.save(FormVerification);
     }
 
-    public FormVerfication getFormVerification(BigInteger Id)
+    public FormVerfication getFormVerification(Long Id)
     {
-        return FormVerification_repo.findById(Id).get();
+        return formVerificationRepository.findById(Id).get();
     }
 
-    public void deleteFormVerification(BigInteger Id)
+    public void deleteFormVerification(Long Id)
     {
-        FormVerification_repo.deleteById(Id);
+        formVerificationRepository.deleteById(Id);
     }
 }

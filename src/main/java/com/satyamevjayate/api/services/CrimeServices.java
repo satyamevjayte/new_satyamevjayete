@@ -22,7 +22,7 @@ public class CrimeServices {
     private AddressesRepository addressesRepository;
     
     @Autowired
-    private CrimeTypeRepository crimetype_repo;
+    private CrimeTypeRepository crimeTypeRepository;
 
     public List<Crime> listAllCrime()
     {
@@ -69,12 +69,12 @@ public class CrimeServices {
 	        return crimeRepository.save(Crime);
     }
 
-    public Crime getCrime(BigInteger Id)
+    public Crime getCrime(Long Id)
     {
         return crimeRepository.findById(Id).get();
     }
 
-    public void deleteCrime(BigInteger Id)
+    public void deleteCrime(Long Id)
     {
         crimeRepository.deleteById(Id);
     }

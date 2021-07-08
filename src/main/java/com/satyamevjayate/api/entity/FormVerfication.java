@@ -17,18 +17,18 @@ public class FormVerfication {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="FormVerificationID")
-    private BigInteger formVerifiactionID;
+    private Long formVerifiactionID;
     @Column(name="ComplainerID")
-    private BigInteger complainerID;
+    private Long complainerID;
     @Column(name="PoliceID")
-    private BigInteger policeID;
+    private Long policeID;
     @Column(name="WorkerID")
-    private BigInteger workerID;
+    private Long workerID;
     @Column(name="ApplyDate")
-    private BigInteger applyDate;
+    private Long applyDate;
     @Column(name="VerifiedDate")
-    private BigInteger verifiedDate;
+    private Long verifiedDate;
     @Column(name="Status")
-    private BigInteger status;
+    private Long status;
 
 }

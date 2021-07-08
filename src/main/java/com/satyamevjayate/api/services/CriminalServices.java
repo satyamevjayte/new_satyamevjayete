@@ -20,13 +20,13 @@ public class CriminalServices {
     private CriminalRepository criminalRepository;
     
     @Autowired
-    private AddressesRepository address_repo;
+    private AddressesRepository addressesRepository;
     
     @Autowired
-    private ContactRepository contact_repo;
+    private ContactRepository contactRepository;
     
     @Autowired
-    private PersonRepository person_repo;
+    private PersonRepository personRepository;
 
     public List<Criminal> listAllCriminal()
     {
@@ -82,10 +82,10 @@ public class CriminalServices {
 //	        person_repo.save(person);
 //	        Criminal.setCriminalPerson(person);
 //        
-    	address_repo.save(Criminal.getCriminalPermanentAddress());
-    	address_repo.save(Criminal.getCriminalResidenceAddress());
-    	contact_repo.save(Criminal.getCriminalContact());
-    	person_repo.save(Criminal.getCriminalPerson());
+		addressesRepository.save(Criminal.getCriminalPermanentAddress());
+		addressesRepository.save(Criminal.getCriminalResidenceAddress());
+		contactRepository.save(Criminal.getCriminalContact());
+		personRepository.save(Criminal.getCriminalPerson());
     	
 	     return criminalRepository.save(Criminal);
     }
@@ -93,7 +93,7 @@ public class CriminalServices {
     
     public Criminal editCriminal(Criminal Criminal)
     {
-    	 Addresses address = address_repo.findById(Criminal.getCriminalPermanentAddress().getAddressID()).orElse(null);
+    	 Addresses address = addressesRepository.findById(Criminal.getCriminalPermanentAddress().getAddressID()).orElse(null);
 	        if (null == address) {
 	          address = new Addresses();
 	        }
@@ -108,7 +108,7 @@ public class CriminalServices {
 	        
 	        
 	        
-	     Addresses residenceAddress = address_repo.findById(Criminal.getCriminalResidenceAddress().getAddressID()).orElse(null);
+	     Addresses residenceAddress = addressesRepository.findById(Criminal.getCriminalResidenceAddress().getAddressID()).orElse(null);
 	        if (null == residenceAddress) {
 	        	residenceAddress = new Addresses();
 	        }
@@ -121,7 +121,7 @@ public class CriminalServices {
 	        
 	        Criminal.setCriminalResidenceAddress(residenceAddress);
 	        
-	    Contact contact=contact_repo.findById(Criminal.getCriminalContact().getContactId()).orElse(null);
+	    Contact contact=contactRepository.findById(Criminal.getCriminalContact().getContactId()).orElse(null);
 	    	if(null==contact)
 	    	{
 	    		contact=new Contact();
@@ -131,7 +131,7 @@ public class CriminalServices {
 		  
 		    Criminal.setCriminalContact(contact);
 		    
-		Person person = person_repo.findById(Criminal.getCriminalPerson().getPersonId()).orElse(null);
+		Person person = personRepository.findById(Criminal.getCriminalPerson().getPersonId()).orElse(null);
 	        if (null == person) {
 	         person = new Person();
 	        }

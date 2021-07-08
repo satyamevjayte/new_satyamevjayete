@@ -15,14 +15,14 @@ import java.util.List;
 @Service
 public class CrimeImageServices {
     @Autowired
-    private CrimeImageRepository CrimeImage_repo;
+    private CrimeImageRepository crimeImageRepository;
     
     @Autowired
     private CrimeRepository crime_repo;
 
     public List<CrimeImage> listAllCrimeImage()
     {
-        return CrimeImage_repo.findAll();
+        return crimeImageRepository.findAll();
     }
 
     public CrimeImage saveCrimeImage(CrimeImage CrimeImage)
@@ -34,16 +34,16 @@ public class CrimeImageServices {
 //	        crime.setCrimeID(CrimeImage.getImageCrimeId().getCrimeID());
 //	        CrimeImage.setImageCrimeId(crime);
 	       
-	     return CrimeImage_repo.save(CrimeImage);
+	     return crimeImageRepository.save(CrimeImage);
     }
 
-    public CrimeImage getCrimeImage(BigInteger Id)
+    public CrimeImage getCrimeImage(Long Id)
     {
-        return CrimeImage_repo.findById(Id).get();
+        return crimeImageRepository.findById(Id).get();
     }
 
-    public void deleteCrimeImage(BigInteger Id)
+    public void deleteCrimeImage(Long Id)
     {
-        CrimeImage_repo.deleteById(Id);
+        crimeImageRepository.deleteById(Id);
     }
 }

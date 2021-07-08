@@ -28,7 +28,7 @@ public class Crime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="CrimeID")
-    private BigInteger crimeID;
+    private Long crimeID;
     
     @Column(name="CrimeDate")
     private Date crimeDate;

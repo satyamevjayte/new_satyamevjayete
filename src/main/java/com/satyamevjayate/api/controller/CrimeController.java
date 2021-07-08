@@ -21,7 +21,7 @@ public class CrimeController {
     }
 
     @GetMapping("/crime/{id}")
-    public Crime getCrime(@PathVariable BigInteger id)
+    public Crime getCrime(@PathVariable Long id)
     {
 
         Crime Crime= crimeServices.getCrime(id);
@@ -44,14 +44,14 @@ public class CrimeController {
 
 
     @DeleteMapping("/crime/{id}")
-    public String deleteCrime(@PathVariable BigInteger id)
+    public String deleteCrime(@PathVariable Long id)
     {
         crimeServices.deleteCrime(id);;
         return "Delete Crime Successfully";
     }
 
     @PutMapping("/crime/{id}")
-    public ResponseEntity<Object> editCrime(@RequestBody Crime Crime, @PathVariable BigInteger id) {
+    public ResponseEntity<Object> editCrime(@RequestBody Crime Crime, @PathVariable Long id) {
 
         Crime.setCrimeID(id);
 

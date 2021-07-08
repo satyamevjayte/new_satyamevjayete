@@ -20,7 +20,7 @@ public class CrimeVictim {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name="CrimeVictimID")
-        private BigInteger crimeVictimID;
+        private Long crimeVictimID;
 
         @ManyToOne(optional=false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
         @JoinColumn(name = "ResidenceAddressID")

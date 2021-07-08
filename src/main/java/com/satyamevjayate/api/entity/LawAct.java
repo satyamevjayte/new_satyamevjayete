@@ -24,7 +24,7 @@ public class LawAct {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="LawID")
-	private BigInteger lawID;
+	private Long lawID;
 	
 	@Column(name="LawName")
 	private String lawName;
