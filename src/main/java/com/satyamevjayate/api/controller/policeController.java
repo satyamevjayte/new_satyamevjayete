@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.satyamevjayate.api.model.CRimeTypewiseCrime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,7 +59,8 @@ public class policeController {
         return "Delete Person Successfully";
     }
 
-	@GetMapping("/policelogin")
+	@GetMapping(value="/policelogin")
+
 	public Police policeLogin(@RequestHeader("email") String email, @RequestHeader("pwd") String pwd)
 	{
 		Police police=policeServices.policeLogin(email,pwd);

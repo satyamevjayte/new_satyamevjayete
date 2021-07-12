@@ -2,7 +2,6 @@ package com.satyamevjayate.api.controller;
 
 import com.satyamevjayate.api.config.JwtTokenUtil;
 import com.satyamevjayate.api.model.JwtRequest;
-import com.satyamevjayate.api.model.JwtResponse;
 import com.satyamevjayate.api.model.UserDTO;
 import com.satyamevjayate.api.services.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ public class JwtAuthenticationController {
     private JwtUserDetailsService userDetailsService;
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
+    public String createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
@@ -36,7 +35,8 @@ public class JwtAuthenticationController {
 
         final String token = jwtTokenUtil.generateToken(userDetails);
 
-        return ResponseEntity.ok(new JwtResponse(token));
+//        return ResponseEntity.ok(new JwtResponse(token));
+        return token;
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
