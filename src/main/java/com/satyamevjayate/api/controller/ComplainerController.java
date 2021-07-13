@@ -53,4 +53,10 @@ public class ComplainerController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping(value="/complainerslogin")
+    public Complainer complainerLogin(@RequestHeader("contactEmail")String contactEmail,@RequestHeader("pwd")String pwd){
+        Complainer complainer=complainerServices.complainerLogin(contactEmail,pwd);
+        return complainer;
+    }
+
 }

@@ -18,6 +18,7 @@ public class TokenGaneration {
         headers.setContentType(MediaType.APPLICATION_JSON);
         System.out.println(headers.getContentType());
         String uriau="http://localhost:8080/authenticate";
+        System.out.println(""+uriau);
         RestTemplate restTemplate = new RestTemplate();
 
         DAOUser daoUser=new DAOUser();

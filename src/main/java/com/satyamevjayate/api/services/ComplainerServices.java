@@ -1,22 +1,28 @@
 package com.satyamevjayate.api.services;
 
 
-import com.satyamevjayate.api.entity.Addresses;
-import com.satyamevjayate.api.entity.Complainer;
-import com.satyamevjayate.api.entity.Contact;
-import com.satyamevjayate.api.entity.Person;
-import com.satyamevjayate.api.repo.AddressesRepository;
-import com.satyamevjayate.api.repo.ComplainerRepository;
-import com.satyamevjayate.api.repo.ContactRepository;
-import com.satyamevjayate.api.repo.PersonRepository;
+import com.satyamevjayate.api.config.TokenGaneration;
+import com.satyamevjayate.api.entity.*;
+import com.satyamevjayate.api.repo.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ComplainerServices {
+    @Autowired
+    private PasswordEncoder bcryptEncoder;
+    @Autowired
+    private UserDao userDao;
 
     @Autowired
     private ComplainerRepository complainerRepository;
@@ -93,7 +99,13 @@ public class ComplainerServices {
         addressesRepository.save(complainer.getComplainerResidenceAddress());
         contactRepository.save(complainer.getComplainerContact());
         personRepository.save(complainer.getComplainerPerson());
+        DAOUser daoUser=new DAOUser();
+        daoUser.setUsername(complainer.getComplainerContact().getContactEmail());
+        daoUser.setPassword(bcryptEncoder.encode(complainer.getPwd()));
+        userDao.save(daoUser);
         complainerRepository.save(complainer);
+
+
     }
 
     public Complainer getComplainer(Long Id)
@@ -104,5 +116,32 @@ public class ComplainerServices {
     public void deleteComplainer(Long Id)
     {
         complainerRepository.deleteById(Id);
+    }
+
+    public Complainer complainerLogin(String contactEmail, String pwd){
+        Long contactId;
+        TokenGaneration tokenGaneration = new TokenGaneration();
+        System.out.println(""+contactEmail+pwd);
+        String token=tokenGaneration.tokengeneration(contactEmail,pwd);
+        HttpHeaders headers=new HttpHeaders();
+        RestTemplate restTemplate=new RestTemplate();
+        System.out.println("Bearer "+token);
+        String jwttoken="Bearer "+token;
+        System.out.println(jwttoken);
+
+        headers.add("Authorization", jwttoken);
+        HttpEntity request1=new HttpEntity(headers);
+        String uri = "http://localhost:8080/conatactbyemail/"+contactEmail;
+
+        ResponseEntity<Long> id1=restTemplate.exchange(uri, HttpMethod.GET,request1,Long.class);
+        contactId=id1.getBody();
+        Complainer complainer=complainerRepository.findIdByPwd(pwd);
+
+        if(Objects.nonNull(contactId)&& Objects.nonNull(complainer)){
+            return complainer;
+        }else {
+            return complainer;
+        }
+
     }
 }
