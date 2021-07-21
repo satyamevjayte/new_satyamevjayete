@@ -24,4 +24,7 @@ public class DAOUser {
     @Column
     @JsonIgnore
     private String password;
+
+    public DAOUser(String username, String password) {
+    }
 }

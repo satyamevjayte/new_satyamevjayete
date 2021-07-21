@@ -1,6 +1,7 @@
 package com.satyamevjayate.api.controller;
 
 import java.util.List;
+import java.util.Objects;
 
 import com.satyamevjayate.api.model.CRimeTypewiseCrime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,14 @@ public class policeController {
 	     policeServices.editPolice(police);
 
 	     return ResponseEntity.noContent().build();
+	}
+	@RequestMapping(value="/changepwdpolices/{id}/{email}/{password}",method = RequestMethod.PUT,consumes = MediaType.ALL_VALUE)
+	public String changePassword(@PathVariable String password, @PathVariable Long id, @PathVariable String email)
+	{
+
+		policeServices.changePassword(id,password,email);
+		return "Password changed successfully! ";
+
 	}
 	@DeleteMapping("/polices/{id}")
     public String deletePolice(@PathVariable Long id)

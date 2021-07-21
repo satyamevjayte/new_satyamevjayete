@@ -36,7 +36,7 @@ public class PoliceServices {
 	
 	@Autowired
 	private AddressesRepository addressesRepository;
-	
+
 	@Autowired
 	private ContactRepository contactRepository;
 	
@@ -200,7 +200,7 @@ public class PoliceServices {
 
 		ResponseEntity<Long> id1=restTemplate.exchange(uri, HttpMethod.GET,request1, Long.class);
 		contactId= id1.getBody();
-		Police police=policeRepository.findIdByPwd(pwd);
+		Police police=policeRepository.findIdByPwd(contactId);
 		if(Objects.nonNull(contactId) && Objects.nonNull(police)){
 			return police;
 		}
@@ -217,4 +217,16 @@ public class PoliceServices {
 	public Long findTotalPolice() {
 		return policeRepository.findTotalPolice();
 	}
+	public void changePassword(Long Id,String pwd,String email) {
+
+		 policeRepository.chnagePassword(Id,pwd);
+		userDao.chnagePassword(email, bcryptEncoder.encode(pwd));
+
+//		DAOUser daoUser=new DAOUser(email, pwd);
+//
+//		userDao.save(daoUser);
+
+
+	}
+
 }

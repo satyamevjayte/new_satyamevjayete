@@ -1,11 +1,14 @@
 package com.satyamevjayate.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+
 @Data
 @Entity
 @AllArgsConstructor

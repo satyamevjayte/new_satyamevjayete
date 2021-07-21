@@ -45,9 +45,8 @@ public class Worker {
     @JoinColumn(name = "PersonID")
     private Person workerPerson;
 	
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "workerDocument")
-	@JsonIgnore
-	private List<WorkerDocument> workerDocument;
 
+    @OneToMany(mappedBy = "workerDocument", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<WorkerDocument> workerDocument;
 }
