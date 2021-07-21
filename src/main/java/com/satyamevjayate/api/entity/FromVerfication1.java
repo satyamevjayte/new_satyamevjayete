@@ -1,36 +1,31 @@
 package com.satyamevjayate.api.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.math.BigInteger;
 import java.util.Date;
 
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @Table(name="formverification")
-public class FormVerfication {
+public class FromVerfication1 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="FormVerificationID")
     private Long formVerifiactionID;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "ComplainerID")
-    private Complainer complainerName;
+    @Column(name="ComplainerID")
+    private Long complainerID;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "PoliceID")
-    private Police policeName;
+    @Column(name="PoliceID")
+    private Long policeID;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "WorkerID")
-    private Worker workerName;
+    @Column(name="WorkerID")
+    private Long workerID;
 
     @Column(name="ApplayDate")
     private Date ApplyDate;
@@ -38,5 +33,4 @@ public class FormVerfication {
     private Date VerifiedDate;
     @Column(name="Status")
     private String Status;
-
 }
